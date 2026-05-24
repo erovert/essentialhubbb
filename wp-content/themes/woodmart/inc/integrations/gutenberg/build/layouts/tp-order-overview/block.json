@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Order overview",
+  "name": "wd/tp-order-overview",
+  "description": "Overview of your order's number, date, and total amount",
+  "category": "xtemos_thank_you_page_elements",
+  "textdomain": "woodmart"
+}

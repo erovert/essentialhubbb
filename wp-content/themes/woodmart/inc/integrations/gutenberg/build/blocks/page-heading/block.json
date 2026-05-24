@@ -1,0 +1,10 @@
+{
+  "apiVersion": 2,
+  "title": "Page heading",
+  "name": "wd/page-heading",
+  "category": "xtemos_site_elements",
+  "textdomain": "woodmart",
+  "keywords": [
+    "heading"
+  ]
+}

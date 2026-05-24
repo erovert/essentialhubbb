@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post comments form",
+  "name": "wd/post-comments-form",
+  "description": "Form for submitting post comments",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

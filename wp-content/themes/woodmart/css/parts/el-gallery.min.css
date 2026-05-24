@@ -1,0 +1,1 @@
+.wd-gallery-item{--wd-otl-offset: calc(var(--wd-otl-width) * -1);display:flex;height:auto;overflow:hidden;align-items:var(--wd-align-items);justify-content:var(--wd-justify-content)}.wd-gallery-item img{border-radius:var(--wd-brd-radius)}

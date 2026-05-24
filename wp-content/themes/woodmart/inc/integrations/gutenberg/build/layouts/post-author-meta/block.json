@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post author",
+  "name": "wd/post-author-meta",
+  "description": "Post published by",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

@@ -1,0 +1,1 @@
+.hide-larger-price .price:has(.amount ~ .amount) :is(.amount ~ .amount,[aria-hidden="true"]:not(.amount)){display:none}.hide-larger-price .price:has(.amount ~ .amount)>small{margin-inline-start:.2em}

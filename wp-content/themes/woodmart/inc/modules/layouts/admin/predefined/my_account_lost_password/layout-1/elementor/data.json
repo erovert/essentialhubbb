@@ -1,0 +1,58 @@
+[
+  {
+    "id": "60c8a23",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "margin": {
+        "unit": "px",
+        "top": "-40",
+        "right": "0",
+        "bottom": "40",
+        "left": "0",
+        "isLinked": false
+      },
+      "scroll_y": -80
+    },
+    "elements": [
+      {
+        "id": "cc0caf8",
+        "elType": "widget",
+        "settings": {
+          "full_width": "yes",
+          "scroll_y": -80
+        },
+        "elements": [],
+        "widgetType": "wd_page_title"
+      }
+    ],
+    "isInner": false
+  },
+  {
+    "id": "050a555",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "flex_align_items": "center",
+      "scroll_y": -80
+    },
+    "elements": [
+      {
+        "id": "988986a",
+        "elType": "widget",
+        "settings": {
+          "_element_width": "initial",
+          "_element_custom_width": {
+            "unit": "px",
+            "size": 470,
+            "sizes": []
+          },
+          "scroll_y": -80
+        },
+        "elements": [],
+        "widgetType": "wd_my_account_lost_password"
+      }
+    ],
+    "isInner": false
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "id": "ddd361a",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "margin": {
+        "unit": "px",
+        "top": "-40",
+        "right": "0",
+        "bottom": "40",
+        "left": "0",
+        "isLinked": ""
+      },
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "29010ff",
+        "elType": "widget",
+        "settings": {
+          "full_width": "yes",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_page_title"
+      }
+    ],
+    "isInner": ""
+  },
+  {
+    "id": "59b6b57",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "boxed_width": {
+        "unit": "px",
+        "size": "700",
+        "sizes": []
+      },
+      "flex_gap": {
+        "column": "40",
+        "row": "40",
+        "isLinked": "1",
+        "unit": "px",
+        "size": "40"
+      },
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "f377c62",
+        "elType": "widget",
+        "settings": {
+          "hook": "woocommerce_before_thankyou",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_hook"
+      },
+      {
+        "id": "2e75d35",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80",
+          "alignment": "center"
+        },
+        "elements": [],
+        "widgetType": "wd_tp_order_message"
+      },
+      {
+        "id": "7770cb3",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_tp_order_overview"
+      },
+      {
+        "id": "479ccc3",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_tp_order_details"
+      },
+      {
+        "id": "f051fb1",
+        "elType": "widget",
+        "settings": {
+          "hook": "woocommerce_order_details_after_order_table",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_hook"
+      },
+      {
+        "id": "7083968",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_tp_customer_details"
+      },
+      {
+        "id": "971e894",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_tp_payment_instructions"
+      },
+      {
+        "id": "473b0c8",
+        "elType": "widget",
+        "settings": {
+          "hook": "woocommerce_thankyou",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_hook"
+      }
+    ],
+    "isInner": ""
+  }
+]

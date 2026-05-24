@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post image",
+  "name": "wd/post-image",
+  "description": "Featured image of the post",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

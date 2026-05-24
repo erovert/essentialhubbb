@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post title",
+  "name": "wd/post-title",
+  "description": "Shows the post title",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

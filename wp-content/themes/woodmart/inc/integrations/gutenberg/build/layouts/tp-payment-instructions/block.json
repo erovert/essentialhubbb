@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Payment instructions",
+  "name": "wd/tp-payment-instructions",
+  "description": "Instructions based on the selected payment method",
+  "category": "xtemos_thank_you_page_elements",
+  "textdomain": "woodmart"
+}

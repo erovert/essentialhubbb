@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "My account content",
+  "name": "wd/ma-content",
+  "description": "My account page content area",
+  "category": "xtemos_my_account_elements",
+  "textdomain": "woodmart"
+}

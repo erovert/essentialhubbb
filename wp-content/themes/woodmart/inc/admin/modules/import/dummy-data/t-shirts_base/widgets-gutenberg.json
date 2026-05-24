@@ -1,0 +1,59 @@
+{
+    "sidebar-1": {
+        "widgets": {
+            "woodmart-recent-posts-2": {
+                "title": "Recent Posts",
+                "limit": 5,
+                "offset": 0,
+                "order": "DESC",
+                "orderby": "date",
+                "category": "all",
+                "date": false,
+                "comment_count": true,
+                "thumb": true,
+                "thumb_height": 45,
+                "thumb_width": 65
+            },
+            "recent-comments-2": {
+                "title": "",
+                "number": 5
+            }
+        }
+    },
+    "filters-area": {
+        "widgets": {
+            "woodmart-woocommerce-layered-nav-2": {
+                "title": "Color",
+                "attribute": "color",
+                "category": [
+                    "all"
+                ],
+                "query_type": "and",
+                "display": "list",
+                "size": "normal",
+                "style": "inherit",
+                "shape": "round",
+                "labels": "on",
+                "tooltips": "on",
+                "checkboxes": "off",
+                "search_by_filters": ""
+            },
+            "woodmart-woocommerce-layered-nav-3": {
+                "title": "Size",
+                "attribute": "size",
+                "category": [
+                    "all"
+                ],
+                "query_type": "and",
+                "display": "list",
+                "size": "normal",
+                "style": "inherit",
+                "shape": "round",
+                "labels": "on",
+                "tooltips": "on",
+                "checkboxes": "off",
+                "search_by_filters": ""
+            }
+        }
+    }
+}

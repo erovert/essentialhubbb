@@ -1,0 +1,112 @@
+[
+  {
+    "id": "8b9e9b5",
+    "elType": "container",
+    "settings": {
+      "flex_gap": {
+        "size": "",
+        "column": "",
+        "row": "",
+        "unit": "px",
+        "isLinked": "1"
+      },
+      "wd_section_stretch": "stretch-content",
+      "margin": {
+        "unit": "px",
+        "top": "-40",
+        "right": "0",
+        "bottom": "30",
+        "left": "0",
+        "isLinked": ""
+      },
+      "container_sticky_offset": "50",
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "54b1d95",
+        "elType": "widget",
+        "settings": {
+          "full_width": "yes",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_page_title"
+      }
+    ],
+    "isInner": ""
+  },
+  {
+    "id": "b2e5792",
+    "elType": "container",
+    "settings": {
+      "flex_gap": {
+        "size": "30",
+        "column": "30",
+        "row": "30",
+        "unit": "px",
+        "isLinked": "1"
+      },
+      "margin": {
+        "unit": "px",
+        "top": "0",
+        "right": "0",
+        "bottom": "30",
+        "left": "0",
+        "isLinked": ""
+      },
+      "container_sticky_offset": "50",
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "94860b3",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_notices"
+      },
+      {
+        "id": "c2d03e7",
+        "elType": "widget",
+        "settings": {
+          "hook": "woocommerce_before_checkout_form",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_hook"
+      },
+      {
+        "id": "39b2dc2",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_checkout_login_form"
+      },
+      {
+        "id": "e278cc9",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_checkout_coupon_form"
+      },
+      {
+        "id": "cdcc1bc",
+        "elType": "widget",
+        "settings": {
+          "hook": "woocommerce_checkout_before_customer_details",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_wc_hook"
+      }
+    ],
+    "isInner": ""
+  }
+]

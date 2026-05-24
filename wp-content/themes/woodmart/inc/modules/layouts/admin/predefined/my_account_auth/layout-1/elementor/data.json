@@ -1,0 +1,196 @@
+[
+  {
+    "id": "6b49fd0",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "margin": {
+        "unit": "px",
+        "top": "-40",
+        "right": "0",
+        "bottom": "40",
+        "left": "0",
+        "isLinked": false
+      },
+      "scroll_y": -80
+    },
+    "elements": [
+      {
+        "id": "4347b38",
+        "elType": "widget",
+        "settings": {
+          "full_width": "yes",
+          "scroll_y": -80
+        },
+        "elements": [],
+        "widgetType": "wd_page_title"
+      }
+    ],
+    "isInner": false
+  },
+  {
+    "id": "9dcb1b6",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "row",
+      "flex_gap": {
+        "unit": "px",
+        "size": 0,
+        "column": "0",
+        "row": "30"
+      },
+      "border_border": "solid",
+      "scroll_y": -80
+    },
+    "elements": [
+      {
+        "id": "cc1dca2",
+        "elType": "container",
+        "settings": {
+          "flex_direction": "column",
+          "content_width": "full",
+          "width": {
+            "unit": "%",
+            "size": "50"
+          },
+          "margin_mobile": {
+            "unit": "px",
+            "top": "0",
+            "right": "0",
+            "bottom": "0",
+            "left": "0",
+            "isLinked": false
+          },
+          "padding": {
+            "unit": "px",
+            "top": "0",
+            "right": "40",
+            "bottom": "0",
+            "left": "40",
+            "isLinked": false
+          },
+          "padding_tablet": {
+            "unit": "px",
+            "top": "0",
+            "right": "15",
+            "bottom": "0",
+            "left": "15",
+            "isLinked": false
+          },
+          "padding_mobile": {
+            "unit": "px",
+            "top": "0",
+            "right": "15",
+            "bottom": "30",
+            "left": "15",
+            "isLinked": false
+          },
+          "scroll_y": -80,
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "0",
+            "right": "1",
+            "bottom": "0",
+            "left": "0",
+            "isLinked": false
+          },
+          "border_width_mobile": {
+            "unit": "px",
+            "top": "0",
+            "right": "0",
+            "bottom": "0",
+            "left": "0",
+            "isLinked": false
+          },
+          "border_color": "#0000001C"
+        },
+        "elements": [
+          {
+            "id": "8f1150e",
+            "elType": "widget",
+            "settings": {
+              "scroll_y": -80
+            },
+            "elements": [],
+            "widgetType": "wd_wc_notices"
+          },
+          {
+            "id": "483990c",
+            "elType": "widget",
+            "settings": {
+              "title_typography_typography": "custom",
+              "title_typography_font_size": {
+                "unit": "px",
+                "size": 24,
+                "sizes": []
+              },
+              "scroll_y": -80
+            },
+            "elements": [],
+            "widgetType": "wd_my_account_login"
+          }
+        ],
+        "isInner": true
+      },
+      {
+        "id": "cf35a93",
+        "elType": "container",
+        "settings": {
+          "flex_direction": "column",
+          "content_width": "full",
+          "width": {
+            "unit": "%",
+            "size": "50"
+          },
+          "padding": {
+            "unit": "px",
+            "top": "0",
+            "right": "40",
+            "bottom": "0",
+            "left": "40",
+            "isLinked": false
+          },
+          "padding_tablet": {
+            "unit": "px",
+            "top": "0",
+            "right": "15",
+            "bottom": "0",
+            "left": "15",
+            "isLinked": false
+          },
+          "scroll_y": -80
+        },
+        "elements": [
+          {
+            "id": "4ef6e5b",
+            "elType": "widget",
+            "settings": {
+              "scroll_y": -80
+            },
+            "elements": [],
+            "widgetType": "wd_wc_notices"
+          },
+          {
+            "id": "b9679f3",
+            "elType": "widget",
+            "settings": {
+              "title_typography_typography": "custom",
+              "title_typography_font_size": {
+                "unit": "px",
+                "size": 24,
+                "sizes": []
+              },
+              "title_alignment": "center",
+              "scroll_y": -80
+            },
+            "elements": [],
+            "widgetType": "wd_my_account_register"
+          }
+        ],
+        "isInner": true
+      }
+    ],
+    "isInner": false
+  }
+]

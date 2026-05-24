@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post date",
+  "name": "wd/post-date-meta",
+  "description": "Date when the post was published",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

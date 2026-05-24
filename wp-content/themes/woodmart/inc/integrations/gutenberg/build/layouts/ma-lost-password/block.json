@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Lost password",
+  "name": "wd/ma-lost-password",
+  "description": "Password recovery form",
+  "category": "xtemos_my_account_elements",
+  "textdomain": "woodmart"
+}

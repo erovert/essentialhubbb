@@ -1,0 +1,16 @@
+{
+  "apiVersion": 2,
+  "title": "Title",
+  "name": "wd/title",
+  "description": "Customizable title with styles, color and typography settings.",
+  "category": "xtemos",
+  "textdomain": "woodmart",
+  "usesContext": [
+    "postId",
+    "postType",
+    "queryId"
+  ],
+  "keywords": [
+    "heading"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+    "sidebar-shop": {
+        "widgets": {
+            "wd-product-category-filter-2": {
+                "title": "Category",
+                "orderby": "name",
+                "display": "list",
+                "checkboxes": "off",
+                "structure": "children_only",
+                "show_search_input": "",
+                "count": "1",
+                "hide_empty": "1",
+                "max_depth": "",
+                "query_type": "or"
+            },
+            "woocommerce_price_filter-2": {
+                "title": "Price"
+            },
+            "woodmart-woocommerce-layered-nav-2": {
+                "title": "Color",
+                "attribute": "color",
+                "category": [
+                    "all"
+                ],
+                "query_type": "and",
+                "display": "list",
+                "size": "normal",
+                "style": "inherit",
+                "shape": "round",
+                "labels": "on",
+                "tooltips": "on",
+                "checkboxes": "off",
+                "search_by_filters": ""
+            },
+            "woodmart-woocommerce-layered-nav-3": {
+                "title": "Size",
+                "attribute": "size",
+                "category": [
+                    "all"
+                ],
+                "query_type": "and",
+                "display": "list",
+                "size": "normal",
+                "style": "inherit",
+                "shape": "round",
+                "labels": "on",
+                "tooltips": "on",
+                "checkboxes": "off",
+                "search_by_filters": ""
+            }
+        }
+    }
+}

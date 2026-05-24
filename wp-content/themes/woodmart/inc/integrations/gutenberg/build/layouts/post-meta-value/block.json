@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post meta value",
+  "name": "wd/post-meta-value",
+  "description": "Custom fields data",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

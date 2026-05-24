@@ -1,0 +1,286 @@
+[
+  {
+    "id": "ecbe7f6",
+    "elType": "container",
+    "settings": {
+      "margin": {
+        "unit": "px",
+        "top": "0",
+        "right": "0",
+        "bottom": "20",
+        "left": "0",
+        "isLinked": ""
+      },
+      "flex_gap": {
+        "size": "40",
+        "column": "40",
+        "row": "30",
+        "unit": "px",
+        "isLinked": ""
+      },
+      "structure": "20",
+      "flex_direction": "row",
+      "flex_direction_mobile": "column",
+      "flex_gap_tablet": {
+        "column": "30",
+        "row": "30",
+        "isLinked": "1",
+        "unit": "px",
+        "size": "30"
+      },
+      "container_sticky_offset": "50",
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "5d225e4",
+        "elType": "container",
+        "settings": {
+          "_column_size": "50",
+          "width": {
+            "size": "50",
+            "unit": "%"
+          },
+          "column_sticky_offset": "50",
+          "scroll_y": "-80",
+          "width_tablet": {
+            "size": "100",
+            "unit": "%"
+          },
+          "content_width": "full",
+          "container_sticky_offset": "50"
+        },
+        "elements": [
+          {
+            "id": "de75c06",
+            "elType": "widget",
+            "settings": {
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_single_product_shipping_progress_bar"
+          },
+          {
+            "id": "d0eb9ec",
+            "elType": "widget",
+            "settings": {
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_checkout_billing_details_form"
+          },
+          {
+            "id": "c536192",
+            "elType": "widget",
+            "settings": {
+              "hook": "woocommerce_checkout_after_customer_details",
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_wc_hook"
+          },
+          {
+            "id": "ccb531f",
+            "elType": "widget",
+            "settings": {
+              "hook": "woocommerce_checkout_billing",
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_wc_hook"
+          },
+          {
+            "id": "a57a1e5",
+            "elType": "widget",
+            "settings": {
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_checkout_shipping_details_from"
+          },
+          {
+            "id": "ef95364",
+            "elType": "widget",
+            "settings": {
+              "hook": "woocommerce_checkout_shipping",
+              "scroll_y": "-80"
+            },
+            "elements": [],
+            "widgetType": "wd_wc_hook"
+          }
+        ],
+        "isInner": "1"
+      },
+      {
+        "id": "76471a0",
+        "elType": "container",
+        "settings": {
+          "_column_size": "50",
+          "width": {
+            "size": "50",
+            "unit": "%"
+          },
+          "column_sticky_offset": "50",
+          "scroll_y": "-80",
+          "width_tablet": {
+            "size": "100",
+            "unit": "%"
+          },
+          "background_background": "classic",
+          "content_width": "full",
+          "container_sticky_offset": "50"
+        },
+        "elements": [
+          {
+            "id": "1d33c39",
+            "elType": "container",
+            "settings": {
+              "background_background": "classic",
+              "background_color": "#F8F8F8",
+              "shape_divider_top": "wd_waves_small",
+              "shape_divider_bottom": "wd_waves_small",
+              "padding": {
+                "unit": "px",
+                "top": "45",
+                "right": "30",
+                "bottom": "45",
+                "left": "30",
+                "isLinked": ""
+              },
+              "flex_gap": {
+                "size": "",
+                "column": "",
+                "row": "",
+                "unit": "px",
+                "isLinked": "1"
+              },
+              "content_width": "full",
+              "container_sticky_offset": "50",
+              "scroll_y": "-80"
+            },
+            "elements": [
+              {
+                "id": "50a6318",
+                "elType": "widget",
+                "settings": {
+                  "subtitle": "",
+                  "title": "YOUR ORDER",
+                  "after_title": "",
+                  "title_typography_typography": "custom",
+                  "title_typography_font_size": {
+                    "unit": "px",
+                    "size": "20",
+                    "sizes": []
+                  },
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_title"
+              },
+              {
+                "id": "cb848a0",
+                "elType": "widget",
+                "settings": {
+                  "hook": "woocommerce_checkout_before_order_review_heading",
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_wc_hook"
+              },
+              {
+                "id": "91face9",
+                "elType": "widget",
+                "settings": {
+                  "scroll_y": "-80",
+                  "_padding": {
+                    "unit": "px",
+                    "top": "5",
+                    "right": "15",
+                    "bottom": "5",
+                    "left": "15",
+                    "isLinked": ""
+                  },
+                  "_background_background": "classic",
+                  "_background_color": "#FFFFFF"
+                },
+                "elements": [],
+                "widgetType": "wd_checkout_order_review"
+              },
+              {
+                "id": "50016df",
+                "elType": "widget",
+                "settings": {
+                  "hook": "woocommerce_checkout_before_order_review",
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_wc_hook"
+              },
+              {
+                "id": "4d9bd4a",
+                "elType": "widget",
+                "settings": {
+                  "hook": "woocommerce_checkout_before_order_review",
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_wc_hook"
+              },
+              {
+                "id": "6a74495",
+                "elType": "widget",
+                "settings": {
+                  "scroll_y": "-80",
+                  "button_alignment": "full-width",
+                  "payment_description_padding": {
+                    "unit": "px",
+                    "top": "15",
+                    "right": "15",
+                    "bottom": "15",
+                    "left": "15",
+                    "isLinked": "1"
+                  },
+                  "payment_description_background-color": "#FFFFFF",
+                  "terms_conditions_padding": {
+                    "unit": "px",
+                    "top": "15",
+                    "right": "15",
+                    "bottom": "15",
+                    "left": "15",
+                    "isLinked": "1"
+                  },
+                  "terms_conditions_background_color": "#FFFFFF"
+                },
+                "elements": [],
+                "widgetType": "wd_checkout_payment_methods"
+              },
+              {
+                "id": "be4d752",
+                "elType": "widget",
+                "settings": {
+                  "hook": "woocommerce_checkout_after_order_review",
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_wc_hook"
+              },
+              {
+                "id": "b1b2a94",
+                "elType": "widget",
+                "settings": {
+                  "hook": "woocommerce_after_checkout_form",
+                  "scroll_y": "-80"
+                },
+                "elements": [],
+                "widgetType": "wd_wc_hook"
+              }
+            ],
+            "isInner": "1"
+          }
+        ],
+        "isInner": "1"
+      }
+    ],
+    "isInner": ""
+  }
+]

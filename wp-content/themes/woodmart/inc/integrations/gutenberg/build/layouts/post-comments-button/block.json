@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Post comments button",
+  "name": "wd/post-comments-button",
+  "description": "Jump-to-comments button",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

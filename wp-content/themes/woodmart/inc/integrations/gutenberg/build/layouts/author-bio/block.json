@@ -1,0 +1,8 @@
+{
+  "apiVersion": 2,
+  "title": "Author bio",
+  "name": "wd/author-bio",
+  "description": "Shows author's biography",
+  "category": "xtemos_posts_elements",
+  "textdomain": "woodmart"
+}

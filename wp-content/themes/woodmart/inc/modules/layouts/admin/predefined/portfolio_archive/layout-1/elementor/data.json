@@ -1,0 +1,67 @@
+[
+  {
+    "id": "44e0228",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "flex_gap": {
+        "column": "",
+        "row": "",
+        "isLinked": "1",
+        "unit": "px",
+        "size": ""
+      },
+      "margin": {
+        "unit": "px",
+        "top": "-40",
+        "right": "0",
+        "bottom": "30",
+        "left": "0",
+        "isLinked": ""
+      },
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "a407f04",
+        "elType": "widget",
+        "settings": {
+          "full_width": "yes",
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_page_title"
+      }
+    ],
+    "isInner": ""
+  },
+  {
+    "id": "5ba3061",
+    "elType": "container",
+    "settings": {
+      "flex_direction": "column",
+      "scroll_y": "-80"
+    },
+    "elements": [
+      {
+        "id": "635de5e",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_portfolio_layout_cats"
+      },
+      {
+        "id": "940e3d9",
+        "elType": "widget",
+        "settings": {
+          "scroll_y": "-80"
+        },
+        "elements": [],
+        "widgetType": "wd_portfolio_archive"
+      }
+    ],
+    "isInner": ""
+  }
+]
