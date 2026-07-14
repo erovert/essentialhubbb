@@ -581,8 +581,8 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<button type="submit" name="add-to-cart" value="11089" class="single_add_to_cart_button button alt">Add to cart</button>
 
-					<button id="wd-add-to-cart" type="submit" name="wd-add-to-cart" value="11089" class="wd-buy-now-btn button alt">
-				Buy now			</button>
+					<button id="wa-product-btn" type="button" class="button alt" style="background-color: #0ec949; border-color: #0ec949;">
+				Buy on Whatsapp			</button>
 			</form>
 
 	
@@ -2529,5 +2529,50 @@ var woodmart_page_css = {"wd-style-base-css":"https://essentialhub.pk/wp-content
 <script id="wd-mobile-navigation-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/menu/mobileNavigation.min.js?ver=8.3.8"></script>
 <script id="wd-hidden-sidebar-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/global/hiddenSidebar.min.js?ver=8.3.8"></script>
 <script id="wd-sticky-sidebar-btn-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/wc/stickySidebarBtn.min.js?ver=8.3.8"></script>
-</body>
+<script id="wa-product-script">
+document.addEventListener("DOMContentLoaded", function () {
+  var btn = document.getElementById("wa-product-btn");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Open a blank tab during the user click so popup blockers allow it.
+    var whatsappWindow = window.open("", "_blank");
+
+    setTimeout(function () {
+      // Split the number and destination so neither is present as a complete
+      // crawlable WhatsApp address in the static page source.
+      var a = "393";
+      var b = "512";
+      var c = "145351";
+      var number = a + b + c;
+      var service = "wa" + ".me/";
+
+      // Read the product information directly from this product page.
+      var titleElement = document.querySelector("h1.product_title");
+      var priceElement = document.querySelector(".wd-single-price .price");
+      var canonicalElement = document.querySelector('link[rel="canonical"]');
+      var productTitle = titleElement ? titleElement.textContent.trim() : document.title;
+      var productPrice = priceElement ? priceElement.textContent.replace(/\s+/g, " ").trim() : "";
+      var productUrl = canonicalElement ? canonicalElement.href : window.location.href;
+
+      var text = "I want to order this product\n" +
+        productTitle + "\n" +
+        "Product price: " + productPrice + "\n" +
+        "Product webpage link: " + productUrl;
+
+      var url = "https://" + service + number + "?text=" + encodeURIComponent(text);
+
+      if (whatsappWindow) {
+        whatsappWindow.opener = null;
+        whatsappWindow.location.href = url;
+      } else {
+        window.location.href = url;
+      }
+    }, 200);
+  });
+});
+</script></body>
 </html>
