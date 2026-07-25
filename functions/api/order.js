@@ -20,6 +20,31 @@ function isEssentialHubUrl(value) {
   }
 }
 
+function createOrderId() {
+  const letters = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  const digits = "23456789";
+  const random = new Uint32Array(8);
+  crypto.getRandomValues(random);
+
+  let id = "EH";
+  for (let index = 0; index < 4; index += 1) {
+    id += digits[random[index] % digits.length];
+  }
+  for (let index = 4; index < 8; index += 1) {
+    id += letters[random[index] % letters.length];
+  }
+  return id;
+}
+
+async function createUniqueOrderId(database) {
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    const orderId = createOrderId();
+    const existing = await database.prepare("SELECT id FROM orders WHERE id = ? LIMIT 1").bind(orderId).first();
+    if (!existing) return orderId;
+  }
+  throw new Error("Could not generate a unique order reference.");
+}
+
 export async function onRequestPost({ request, env }) {
   try {
     if (!env.DB) return json({ error: "Database binding DB is not configured." }, 503);
@@ -51,7 +76,7 @@ export async function onRequestPost({ request, env }) {
       return json({ error: "Invalid or incomplete order data." }, 400);
     }
 
-    const orderId = crypto.randomUUID();
+    const orderId = await createUniqueOrderId(env.DB);
     const createdAt = new Date().toISOString();
 
     await env.DB.prepare(`

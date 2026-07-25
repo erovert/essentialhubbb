@@ -13,8 +13,21 @@
     h1 { margin:0 0 14px; font-size:30px; }
     p { color:#475467; line-height:1.65; }
     .reference { padding:12px; margin:22px 0; border-radius:9px; background:#f2f4f7; color:#344054; }
-    a { display:inline-block; margin-top:12px; padding:13px 24px; border-radius:9px; background:#2563eb; color:#fff; text-decoration:none; font-weight:700; }
-    a:hover { background:#1d4ed8; }
+    .confirmation { margin:26px 0; padding:22px; border:1px solid #fecaca; border-radius:12px; background:#fff7f7; }
+    .urdu-message { margin:0; color:#d9534f; font-size:18px; font-weight:700; line-height:1.8; direction:rtl; }
+    .arrow { margin:8px 0; font-size:40px; animation:bounce 1s infinite; }
+    .button { display:inline-block; margin-top:12px; padding:13px 24px; border-radius:9px; color:#fff; text-decoration:none; font-weight:700; }
+    .shop-button { background:#2563eb; }
+    .shop-button:hover { background:#1d4ed8; }
+    .wa-button { background:#25d366; }
+    .wa-button:hover { background:#1fac54; }
+    #wa-popup-overlay { position:fixed; inset:0; z-index:9999; display:none; justify-content:center; align-items:center; padding:20px; background:rgba(0,0,0,.7); }
+    #wa-popup-overlay.is-visible { display:flex; }
+    #wa-popup-box { position:relative; width:min(400px,100%); padding:28px 24px; border-radius:12px; background:#fff; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.3); }
+    #wa-popup-close { position:absolute; top:-13px; right:-13px; width:38px; height:38px; border:0; border-radius:50%; display:grid; place-items:center; background:#111; color:#fff; font-size:25px; line-height:1; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.3); }
+    #wa-popup-close:hover { background:#e11d48; }
+    @keyframes bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(10px); } }
+    @media (max-width:600px) { main { padding:34px 20px; } h1 { font-size:26px; } #wa-popup-close { width:42px; height:42px; } }
   </style>
 </head>
 <body>
@@ -24,15 +37,62 @@
     <p>We received your order successfully. Our team will contact you by WhatsApp or mobile call to verify the delivery details.</p>
     <p>Cash on Delivery is available, and your parcel will be sent in discreet packaging.</p>
     <p id="reference" class="reference" hidden></p>
-    <a href="/">Continue Shopping</a>
+    <section class="confirmation" aria-labelledby="confirmation-message">
+      <p id="confirmation-message" class="urdu-message" lang="ur">اپنا آرڈر نیچے دیے گئے واٹس ایپ بٹن پر کلک کر کے کنفرم کر دیں، ورنہ آپ کا آرڈر شپ نہیں ہوگا</p>
+      <div class="arrow" aria-hidden="true">⬇️</div>
+      <a id="wa-confirm-link" class="button wa-button" href="#" target="_blank" rel="noopener">Click Here To Confirm</a>
+    </section>
+    <a class="button shop-button" href="/">Continue Shopping</a>
   </main>
+
+  <div id="wa-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="wa-popup-message">
+    <div id="wa-popup-box">
+      <button id="wa-popup-close" type="button" aria-label="Close confirmation reminder">&times;</button>
+      <p id="wa-popup-message" class="urdu-message" lang="ur">اپنا آرڈر نیچے دیے گئے واٹس ایپ بٹن پر کلک کر کے کنفرم کر دیں، ورنہ آپ کا آرڈر شپ نہیں ہوگا</p>
+      <div class="arrow" aria-hidden="true">⬇️</div>
+      <a id="wa-popup-link" class="button wa-button" href="#" target="_blank" rel="noopener">واٹس ایپ پر کنفرم کریں</a>
+    </div>
+  </div>
+
   <script>
-    var orderId = new URLSearchParams(window.location.search).get("order");
+    var params = new URLSearchParams(window.location.search);
+    var orderId = (params.get("order") || "").replace(/[^A-Z0-9]/gi, "").slice(0, 10);
+    var firstName = (params.get("name") || "Customer").trim().slice(0, 80);
+
     if (orderId) {
       var reference = document.getElementById("reference");
       reference.textContent = "Order reference: " + orderId;
       reference.hidden = false;
     }
+
+    var numberPartOne = "393";
+    var numberPartTwo = "512";
+    var numberPartThree = "145351";
+    var service = "wa" + ".me/";
+    var message = "Hello, I confirm my order #" + orderId + ". Name: " + firstName;
+    var whatsappUrl = "https://" + service + numberPartOne + numberPartTwo + numberPartThree + "?text=" + encodeURIComponent(message);
+    document.getElementById("wa-confirm-link").href = whatsappUrl;
+    document.getElementById("wa-popup-link").href = whatsappUrl;
+
+    var popup = document.getElementById("wa-popup-overlay");
+    var closeButton = document.getElementById("wa-popup-close");
+    var popupTimer = window.setTimeout(function () {
+      popup.classList.add("is-visible");
+      closeButton.focus();
+    }, 1500);
+
+    function closePopup() {
+      window.clearTimeout(popupTimer);
+      popup.classList.remove("is-visible");
+    }
+
+    closeButton.addEventListener("click", closePopup);
+    popup.addEventListener("click", function (event) {
+      if (event.target === popup) closePopup();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closePopup();
+    });
   </script>
 </body>
 </html>

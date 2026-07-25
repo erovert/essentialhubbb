@@ -181,7 +181,12 @@
         });
         if (!response.ok) throw new Error("Order request failed");
         var result = await response.json();
-        window.location.href = "/order-confirmation/?order=" + encodeURIComponent(result.order_id || "");
+        var firstName = document.getElementById("first_name").value.trim();
+        var confirmationParams = new URLSearchParams({
+          order: result.order_id || "",
+          name: firstName
+        });
+        window.location.href = "/order-confirmation/?" + confirmationParams.toString();
       } catch (error) {
         errorBox.textContent = "We could not submit your order. Please check your connection and try again.";
         errorBox.style.display = "block";
