@@ -628,7 +628,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 	
 	</div>
 
-		<button type="submit" name="add-to-cart" value="10734" class="single_add_to_cart_button button alt">Add to cart</button>
+		<button id="buy-now-btn" type="button" class="single_add_to_cart_button button alt">Buy Now</button>
 
 					<button id="wa-product-btn" type="button" class="button alt" style="background-color: #0ec949; border-color: #0ec949;">
 				Buy on Whatsapp			</button>
@@ -2551,6 +2551,35 @@ var woodmart_page_css = {"wd-style-base-css":"https://essentialhub.pk/wp-content
 <script id="wd-mobile-navigation-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/menu/mobileNavigation.min.js?ver=8.3.8"></script>
 <script id="wd-hidden-sidebar-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/global/hiddenSidebar.min.js?ver=8.3.8"></script>
 <script id="wd-sticky-sidebar-btn-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/wc/stickySidebarBtn.min.js?ver=8.3.8"></script>
+<script id="buy-now-script">
+document.addEventListener("DOMContentLoaded", function () {
+  var btn = document.getElementById("buy-now-btn");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", function () {
+    var titleElement = document.querySelector("h1.product_title");
+    var priceElement = document.querySelector(".wd-single-price .price");
+    var canonicalElement = document.querySelector('link[rel="canonical"]');
+    var imageElement = document.querySelector(".woocommerce-product-gallery__image .wp-post-image");
+
+    var title = titleElement ? titleElement.textContent.trim() : document.title;
+    var priceText = priceElement ? priceElement.textContent : "0";
+    var price = priceText.replace(/[^0-9.]/g, "");
+    var productUrl = canonicalElement ? canonicalElement.href : window.location.href;
+    var imageUrl = imageElement ? (imageElement.dataset.large_image || imageElement.currentSrc || imageElement.src) : "";
+
+    var params = new URLSearchParams({
+      title: title,
+      price: price,
+      url: productUrl,
+      img: imageUrl
+    });
+
+    window.location.href = "/order/?" + params.toString();
+  });
+});
+</script>
 <script id="wa-product-script">
 document.addEventListener("DOMContentLoaded", function () {
   var btn = document.getElementById("wa-product-btn");

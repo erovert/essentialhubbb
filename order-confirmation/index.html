@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Order Confirmed | Essential Hub</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:#f6f7f9; color:#111827; font-family:Arial,Helvetica,sans-serif; }
+    main { width:min(620px,100%); padding:42px 30px; background:#fff; border:1px solid #eceef1; border-radius:16px; box-shadow:0 2px 8px rgba(16,24,40,.06); text-align:center; }
+    .check { width:70px; height:70px; margin:0 auto 22px; border-radius:50%; display:grid; place-items:center; background:#dcfce7; color:#15803d; font-size:38px; font-weight:700; }
+    h1 { margin:0 0 14px; font-size:30px; }
+    p { color:#475467; line-height:1.65; }
+    .reference { padding:12px; margin:22px 0; border-radius:9px; background:#f2f4f7; color:#344054; }
+    a { display:inline-block; margin-top:12px; padding:13px 24px; border-radius:9px; background:#2563eb; color:#fff; text-decoration:none; font-weight:700; }
+    a:hover { background:#1d4ed8; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="check" aria-hidden="true">✓</div>
+    <h1>Thank You! Your Order Has Been Placed</h1>
+    <p>We received your order successfully. Our team will contact you by WhatsApp or mobile call to verify the delivery details.</p>
+    <p>Cash on Delivery is available, and your parcel will be sent in discreet packaging.</p>
+    <p id="reference" class="reference" hidden></p>
+    <a href="/">Continue Shopping</a>
+  </main>
+  <script>
+    var orderId = new URLSearchParams(window.location.search).get("order");
+    if (orderId) {
+      var reference = document.getElementById("reference");
+      reference.textContent = "Order reference: " + orderId;
+      reference.hidden = false;
+    }
+  </script>
+</body>
+</html>

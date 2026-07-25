@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Checkout | Essential Hub</title>
+  <style>
+    :root { --blue:#2563eb; --blue-dark:#1d4ed8; --border:#dfe3e8; --muted:#667085; --bg:#f6f7f9; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:#111827; font-family:Arial,Helvetica,sans-serif; }
+    .checkout { width:min(1180px,100%); margin:0 auto; padding:40px 20px; display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,.9fr); gap:36px; align-items:start; }
+    .card { background:#fff; border:1px solid #eceef1; border-radius:16px; padding:28px; box-shadow:0 2px 8px rgba(16,24,40,.06); }
+    h1 { margin:0 0 24px; font-size:30px; }
+    h2 { margin:26px 0 16px; font-size:23px; }
+    h2:first-of-type { margin-top:0; }
+    label { display:block; margin:14px 0 6px; font-size:14px; }
+    input,select,textarea { width:100%; border:1px solid var(--border); border-radius:9px; padding:13px 14px; font:inherit; color:#111827; background:#fff; }
+    input:focus,textarea:focus { outline:2px solid #bfdbfe; border-color:var(--blue); }
+    textarea { resize:vertical; min-height:100px; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .method { border:1px solid var(--border); border-radius:9px; padding:15px; display:flex; justify-content:space-between; }
+    .submit { width:100%; border:0; border-radius:9px; padding:15px; margin-top:24px; background:var(--blue); color:#fff; font-size:17px; font-weight:700; cursor:pointer; }
+    .submit:hover { background:var(--blue-dark); }
+    .submit:disabled { background:#98a2b3; cursor:not-allowed; }
+    .error { display:none; margin:16px 0 0; padding:12px; border-radius:8px; background:#fef2f2; color:#b42318; font-size:14px; }
+    .summary { position:sticky; top:24px; }
+    .product { display:grid; grid-template-columns:94px 1fr auto; gap:16px; align-items:center; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .product img { width:94px; height:94px; border:1px solid var(--border); border-radius:10px; object-fit:cover; }
+    .product h3 { margin:0 0 9px; font-size:17px; line-height:1.35; }
+    .product a { color:var(--blue); font-size:13px; overflow-wrap:anywhere; }
+    .price { font-weight:700; white-space:nowrap; }
+    .totals { margin-top:20px; }
+    .total-row { display:flex; justify-content:space-between; margin:12px 0; }
+    .grand-total { border-top:1px solid var(--border); padding-top:18px; margin-top:18px; font-size:20px; font-weight:700; }
+    .muted { color:var(--muted); font-size:13px; }
+    .honeypot { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    @media (max-width:800px) { .checkout { grid-template-columns:1fr; padding:18px 12px; gap:18px; } .summary { position:static; order:-1; } .card { padding:20px; } }
+    @media (max-width:520px) { .row { grid-template-columns:1fr; gap:0; } .product { grid-template-columns:76px 1fr; } .product img { width:76px; height:76px; } .product .price { grid-column:2; } }
+  </style>
+</head>
+<body>
+  <main class="checkout">
+    <section class="card">
+      <h1>Checkout</h1>
+      <form id="orderForm">
+        <h2>Contact</h2>
+        <label for="whatsapp">WhatsApp number for order verification</label>
+        <input id="whatsapp" name="whatsapp" type="tel" placeholder="03XXXXXXXXX" autocomplete="tel" required maxlength="20">
+
+        <h2>Delivery</h2>
+        <label for="country">Country/Region</label>
+        <select id="country" disabled><option selected>Pakistan</option></select>
+
+        <div class="row">
+          <div><label for="first_name">First name</label><input id="first_name" name="first_name" autocomplete="given-name" required maxlength="80"></div>
+          <div><label for="last_name">Last name (optional)</label><input id="last_name" name="last_name" autocomplete="family-name" maxlength="80"></div>
+        </div>
+
+        <label for="address">Address</label>
+        <input id="address" name="address" autocomplete="street-address" required maxlength="250">
+
+        <label for="address_2">Apartment, suite, etc. (optional)</label>
+        <input id="address_2" name="address_2" maxlength="150">
+
+        <div class="row">
+          <div><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" required maxlength="100"></div>
+          <div><label for="postal_code">Postal code (optional)</label><input id="postal_code" name="postal_code" autocomplete="postal-code" maxlength="20"></div>
+        </div>
+
+        <label for="mobile">Mobile number</label>
+        <input id="mobile" name="mobile" type="tel" autocomplete="tel" required maxlength="20">
+
+        <label for="order_notes">Order notes (optional)</label>
+        <textarea id="order_notes" name="order_notes" placeholder="Notes about your order, e.g. special delivery instructions." maxlength="1000"></textarea>
+
+        <div class="honeypot" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off"></div>
+
+        <h2>Shipping method</h2>
+        <div class="method"><span>Standard delivery</span><strong>FREE</strong></div>
+
+        <h2>Payment</h2>
+        <div class="method"><strong>Cash on Delivery (COD)</strong></div>
+
+        <p id="formError" class="error" role="alert"></p>
+        <button id="submitBtn" class="submit" type="submit">Complete Order</button>
+      </form>
+    </section>
+
+    <aside class="card summary">
+      <h2>Order Summary</h2>
+      <div class="product">
+        <img id="productImg" alt="" hidden>
+        <div><h3 id="productTitle">Product</h3><a id="productUrl" rel="noopener"></a></div>
+        <span id="productPrice" class="price"></span>
+      </div>
+      <div class="totals">
+        <div class="total-row"><span>Subtotal</span><span id="subtotal"></span></div>
+        <div class="total-row"><span>Shipping</span><span>FREE</span></div>
+        <div class="total-row grand-total"><span>Total (PKR)</span><span id="total"></span></div>
+      </div>
+      <p class="muted">Your order will be verified before dispatch.</p>
+    </aside>
+  </main>
+
+  <script>
+  (function () {
+    "use strict";
+    var params = new URLSearchParams(window.location.search);
+    var product = {
+      title: (params.get("title") || "").trim(),
+      price: (params.get("price") || "").replace(/[^0-9.]/g, ""),
+      url: (params.get("url") || "").trim(),
+      image: (params.get("img") || "").trim()
+    };
+
+    function allowedEssentialHubUrl(value) {
+      try {
+        var parsed = new URL(value);
+        return parsed.protocol === "https:" && parsed.hostname === "essentialhub.pk";
+      } catch (error) { return false; }
+    }
+
+    var validProduct = product.title && Number(product.price) > 0 && allowedEssentialHubUrl(product.url) && allowedEssentialHubUrl(product.image);
+    var displayPrice = new Intl.NumberFormat("en-PK").format(Number(product.price) || 0);
+    var errorBox = document.getElementById("formError");
+    var submitBtn = document.getElementById("submitBtn");
+
+    document.getElementById("productTitle").textContent = product.title || "Product information unavailable";
+    document.getElementById("productPrice").textContent = "Rs " + displayPrice;
+    document.getElementById("subtotal").textContent = "Rs " + displayPrice;
+    document.getElementById("total").textContent = "Rs " + displayPrice;
+
+    if (allowedEssentialHubUrl(product.url)) {
+      var productLink = document.getElementById("productUrl");
+      productLink.textContent = product.url;
+      productLink.href = product.url;
+    }
+    if (allowedEssentialHubUrl(product.image)) {
+      var image = document.getElementById("productImg");
+      image.src = product.image;
+      image.alt = product.title;
+      image.hidden = false;
+    }
+    if (!validProduct) {
+      errorBox.textContent = "The product information is missing or invalid. Please return to the product page and click Buy Now again.";
+      errorBox.style.display = "block";
+      submitBtn.disabled = true;
+    }
+
+    document.getElementById("orderForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      if (!validProduct || submitBtn.disabled) return;
+      if (!event.currentTarget.reportValidity()) return;
+
+      errorBox.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
+
+      var payload = {
+        product_title: product.title,
+        product_price: product.price,
+        product_url: product.url,
+        product_image: product.image,
+        customer_name: (document.getElementById("first_name").value.trim() + " " + document.getElementById("last_name").value.trim()).trim(),
+        whatsapp: document.getElementById("whatsapp").value.trim(),
+        mobile: document.getElementById("mobile").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        address_2: document.getElementById("address_2").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        postal_code: document.getElementById("postal_code").value.trim(),
+        order_notes: document.getElementById("order_notes").value.trim(),
+        company: document.getElementById("company").value
+      };
+
+      try {
+        var response = await fetch("/api/order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error("Order request failed");
+        var result = await response.json();
+        window.location.href = "/order-confirmation/?order=" + encodeURIComponent(result.order_id || "");
+      } catch (error) {
+        errorBox.textContent = "We could not submit your order. Please check your connection and try again.";
+        errorBox.style.display = "block";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Complete Order";
+      }
+    });
+  }());
+  </script>
+</body>
+</html>
