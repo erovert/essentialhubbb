@@ -628,7 +628,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 	
 	</div>
 
-		<button id="buy-now-btn" type="button" class="single_add_to_cart_button button alt">Buy Now</button>
+		<button id="buy-now-btn" type="button" class="single_add_to_cart_button button alt eh-buy-now-button">Buy Now</button>
 
 					<button id="wa-product-btn" type="button" class="button alt" style="background-color: #0ec949; border-color: #0ec949;">
 				Buy on Whatsapp			</button>
@@ -1652,9 +1652,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10637">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10637" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10637" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10637" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -1729,9 +1727,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10644">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10644" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10644" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10644" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -1806,9 +1802,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10651">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10651" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10651" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10651" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -1881,9 +1875,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10657">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10657" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10657" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10657" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -1958,9 +1950,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10664">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10664" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10664" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10664" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -2035,9 +2025,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 		<div class="wd-add-btn wd-add-btn-replace">
 			
-			<button class="single_add_to_cart_button button alt" type="button" data-product-id="10671">
-        Add to cart
-    </button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10671" class="screen-reader-text">
+			<button class="single_add_to_cart_button button alt eh-buy-now-button" data-product-id="10671" type="button">Buy Now</button>	<span id="woocommerce_loop_add_to_cart_link_describedby_10671" class="screen-reader-text">
 			</span>
 		</div>
 
@@ -2551,35 +2539,6 @@ var woodmart_page_css = {"wd-style-base-css":"https://essentialhub.pk/wp-content
 <script id="wd-mobile-navigation-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/menu/mobileNavigation.min.js?ver=8.3.8"></script>
 <script id="wd-hidden-sidebar-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/global/hiddenSidebar.min.js?ver=8.3.8"></script>
 <script id="wd-sticky-sidebar-btn-js" src="https://essentialhub.pk/wp-content/themes/woodmart/js/scripts/wc/stickySidebarBtn.min.js?ver=8.3.8"></script>
-<script id="buy-now-script">
-document.addEventListener("DOMContentLoaded", function () {
-  var btn = document.getElementById("buy-now-btn");
-
-  if (!btn) return;
-
-  btn.addEventListener("click", function () {
-    var titleElement = document.querySelector("h1.product_title");
-    var priceElement = document.querySelector(".wd-single-price .price");
-    var canonicalElement = document.querySelector('link[rel="canonical"]');
-    var imageElement = document.querySelector(".woocommerce-product-gallery__image .wp-post-image");
-
-    var title = titleElement ? titleElement.textContent.trim() : document.title;
-    var priceText = priceElement ? priceElement.textContent : "0";
-    var price = priceText.replace(/[^0-9.]/g, "");
-    var productUrl = canonicalElement ? canonicalElement.href : window.location.href;
-    var imageUrl = imageElement ? (imageElement.dataset.large_image || imageElement.currentSrc || imageElement.src) : "";
-
-    var params = new URLSearchParams({
-      title: title,
-      price: price,
-      url: productUrl,
-      img: imageUrl
-    });
-
-    window.location.href = "/order/?" + params.toString();
-  });
-});
-</script>
 <script id="wa-product-script">
 document.addEventListener("DOMContentLoaded", function () {
   var btn = document.getElementById("wa-product-btn");
@@ -2625,5 +2584,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200);
   });
 });
-</script></body>
+</script><script src="/wp-content/essentialhub-buy-now.js"></script>
+</body>
 </html>
