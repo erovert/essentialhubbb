@@ -11,6 +11,15 @@ function clean(value, maxLength) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function isEssentialHubUrl(value) {
   try {
     const url = new URL(value);
@@ -45,7 +54,89 @@ async function createUniqueOrderId(database) {
   throw new Error("Could not generate a unique order reference.");
 }
 
-export async function onRequestPost({ request, env }) {
+async function sendOrderEmail(order, orderId, createdAt, env) {
+  if (!env.RESEND_API_KEY || !env.ADMIN_EMAIL || !env.ORDER_FROM_EMAIL) {
+    console.error("ORDER_EMAIL_CONFIG_MISSING", {
+      has_api_key: Boolean(env.RESEND_API_KEY),
+      has_admin_email: Boolean(env.ADMIN_EMAIL),
+      has_from_email: Boolean(env.ORDER_FROM_EMAIL)
+    });
+    return;
+  }
+
+  const price = `Rs ${Number(order.product_price).toLocaleString("en-PK")}`;
+  const safe = Object.fromEntries(
+    Object.entries(order).map(([key, value]) => [key, escapeHtml(value)])
+  );
+  const safeOrderId = escapeHtml(orderId);
+  const safeCreatedAt = escapeHtml(createdAt);
+
+  const html = `
+    <div style="margin:0;padding:24px;background:#f5f7fa;font-family:Arial,sans-serif;color:#172033">
+      <div style="max-width:680px;margin:auto;background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
+        <div style="padding:22px 26px;background:#2563eb;color:#ffffff">
+          <h1 style="margin:0;font-size:24px">New Essential Hub Order</h1>
+          <p style="margin:8px 0 0">Order reference: <strong>${safeOrderId}</strong></p>
+        </div>
+        <div style="padding:26px">
+          <h2 style="margin:0 0 16px;font-size:19px">Product</h2>
+          <table role="presentation" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td style="width:120px;padding:0 18px 18px 0;vertical-align:top">
+                <img src="${safe.product_image}" alt="" width="110" style="display:block;max-width:110px;height:auto;border:1px solid #e5e7eb;border-radius:8px">
+              </td>
+              <td style="padding:0 0 18px;vertical-align:top">
+                <p style="margin:0 0 8px;font-size:17px;font-weight:bold">${safe.product_title}</p>
+                <p style="margin:0 0 8px;font-size:17px;font-weight:bold">${escapeHtml(price)}</p>
+                <a href="${safe.product_url}" style="color:#2563eb;word-break:break-all">Open product page</a>
+              </td>
+            </tr>
+          </table>
+
+          <h2 style="margin:8px 0 12px;font-size:19px">Customer and delivery details</h2>
+          <table role="presentation" style="width:100%;border-collapse:collapse;font-size:15px">
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Name</td><td style="padding:7px 0">${safe.customer_name}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Mobile</td><td style="padding:7px 0">${safe.mobile}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">WhatsApp</td><td style="padding:7px 0">${safe.whatsapp}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Address</td><td style="padding:7px 0">${safe.address}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Additional address</td><td style="padding:7px 0">${safe.address_2 || "—"}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">City</td><td style="padding:7px 0">${safe.city}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Postal code</td><td style="padding:7px 0">${safe.postal_code || "—"}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Order notes</td><td style="padding:7px 0;white-space:pre-wrap">${safe.order_notes || "—"}</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Status</td><td style="padding:7px 0">New</td></tr>
+            <tr><td style="padding:7px 12px 7px 0;font-weight:bold">Created</td><td style="padding:7px 0">${safeCreatedAt}</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+      "Idempotency-Key": `essentialhub-order-${orderId}`
+    },
+    body: JSON.stringify({
+      from: env.ORDER_FROM_EMAIL,
+      to: [env.ADMIN_EMAIL],
+      subject: `New Essential Hub Order — ${orderId}`,
+      html
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = (await response.text()).slice(0, 1000);
+    throw new Error(`Resend rejected order email (${response.status}): ${errorText}`);
+  }
+
+  console.log("ORDER_EMAIL_SENT", { order_id: orderId });
+}
+
+export async function onRequestPost(context) {
+  const { request, env } = context;
+
   try {
     if (!env.DB) return json({ error: "Database binding DB is not configured." }, 503);
 
@@ -90,6 +181,12 @@ export async function onRequestPost({ request, env }) {
       order.customer_name, order.mobile, order.whatsapp, order.address, order.address_2,
       order.city, order.postal_code, order.order_notes, "new", createdAt
     ).run();
+
+    const emailTask = sendOrderEmail(order, orderId, createdAt, env).catch((error) => {
+      console.error("ORDER_EMAIL_ERROR", { order_id: orderId, message: error.message });
+    });
+
+    context.waitUntil(emailTask);
 
     return json({ success: true, order_id: orderId }, 201);
   } catch (error) {
